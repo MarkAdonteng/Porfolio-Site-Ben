@@ -359,26 +359,6 @@
             transition: transform 0.3s;
         }
 
-        .stem-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            padding: 20px;
-            color: white;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-
-        .stem-card:hover .stem-image {
-            transform: scale(1.1);
-        }
-
-        .stem-card:hover .stem-overlay {
-            transform: translateY(0);
-        }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .stem-gallery {
@@ -485,6 +465,61 @@
                 grid-template-columns: repeat(4, 1fr);
             }
         }
+
+        /* Add this CSS in your <style> section */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding: 40px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 35px;
+            top: 15px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Animation for the modal */
+        .modal.fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Make stem-card images clickable */
+        .stem-card {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -500,7 +535,9 @@
 
     <section class="hero" id="home">
         <video autoplay muted loop id="hero-video" class="hero-background">
-            <source src="hero-background.mp4" type="video/mp4">
+            <!-- <source src="hero-background.mp4" type="video/mp4"> -->
+
+            <source src="https://videos.pexels.com/video-files/8084750/8084750-uhd_2560_1440_25fps.mp4" type="video/mp4"> 
         </video>
         <div class="hero-content" data-aos="fade-up">
             <div class="profile-image">
@@ -663,90 +700,42 @@
             <h2 data-aos="fade-up">STEM Education</h2>
             <div class="stem-gallery initial-stem" data-aos="fade-up">
                 <div class="stem-card">
-                    <img src="ben5.jpg" alt="Arduino Workshop" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>Arduino Workshops</h3>
-                        <p>Teaching basic electronics and programming</p>
-                    </div>
+                    <img src="ben5.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
                 <div class="stem-card">
-                    <img src="ben6.jpg" alt="Robotics Class" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>Robotics Classes</h3>
-                        <p>Building and programming educational robots</p>
-                    </div>
+                    <img src="ben6.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
                 <div class="stem-card">
-                    <img src="ben16.jpg" alt="3D Printing Workshop" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>3D Printing Workshop</h3>
-                        <p>Hands-on experience with 3D modeling and printing</p>
-                    </div>
+                    <img src="ben16.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
                 <div class="stem-card">
-                    <img src="ben17.jpg" alt="IoT Workshop" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>IoT Workshop</h3>
-                        <p>Internet of Things development and applications</p>
-                    </div>
+                    <img src="ben17.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
             </div>
             <div class="stem-gallery hidden-stem" style="display: none;">
                 <div class="stem-card">
-                    <img src="ben16.jpg" alt="3D Printing Workshop" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>3D Printing Workshop</h3>
-                        <p>Hands-on experience with 3D modeling and printing</p>
-                    </div>
+                    <img src="ben16.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
                 <div class="stem-card">
-                    <img src="ben13.jpg" alt="IoT Workshop" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>IoT Workshop</h3>
-                        <p>Internet of Things development and applications</p>
-                    </div>
+                    <img src="ben14.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
                 <div class="stem-card">
-                    <img src="ben14.jpg" alt="Circuit Design" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>Circuit Design Lab</h3>
-                        <p>Advanced electronics and PCB design</p>
-                    </div>
+                    <img src="ben20.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
                 <div class="stem-card">
-                    <img src="ben15.jpg" alt="Python Programming" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>Python Programming</h3>
-                        <p>Introduction to programming with Python</p>
-                    </div>
+                    <img src="ben21.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
                 <div class="stem-card">
-                    <img src="ben17.jpg" alt="Microcontroller Programming" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>Microcontroller Programming</h3>
-                        <p>Advanced embedded systems development</p>
-                    </div>
+                    <img src="ben17.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
                 <div class="stem-card">
-                    <img src="ben18.jpg" alt="AI & Machine Learning" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>AI & Machine Learning</h3>
-                        <p>Introduction to AI and ML concepts</p>
-                    </div>
+                    <img src="ben22.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
                 <div class="stem-card">
-                    <img src="ben19.jpg" alt="Drone Building" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>Drone Building</h3>
-                        <p>Design and assembly of custom drones</p>
-                    </div>
+                    <img src="ben19.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
                 <div class="stem-card">
-                    <img src="ben20.jpg" alt="Mobile App Development" class="stem-image">
-                    <div class="stem-overlay">
-                        <h3>Mobile App Development</h3>
-                        <p>Creating apps for IoT and robotics projects</p>
-                    </div>
+                    <img src="ben13.jpg" alt="STEM Teaching Moment" class="stem-image">
                 </div>
             </div>
             
@@ -863,6 +852,51 @@
                     button.textContent = 'View More STEM Activities';
                     button.classList.remove('active');
                 }, 500);
+            }
+        });
+    </script>
+
+    <!-- Add this HTML right before the closing </body> tag -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img id="modalImage" class="modal-content">
+    </div>
+
+    <script>
+        // Image modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // Add click event to all stem-card images
+        document.querySelectorAll('.stem-card img').forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modal.classList.add('fade-in');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            });
+        });
+        
+        // Close modal when clicking the × button
+        closeModal.addEventListener('click', function() {
+            modal.style.display = "none";
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        });
+        
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = "none";
+                document.body.style.overflow = 'auto'; // Restore scrolling
             }
         });
     </script>
