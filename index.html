@@ -783,6 +783,210 @@
                 display: none;
             }
         }
+
+        /* Add or update these mobile-specific styles in your <style> section */
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 10px 5px;
+            }
+
+            .nav-links {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+                padding: 5px 8px;
+            }
+        }
+
+        /* Mobile Hero Section */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding-top: 80px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-btn {
+                width: 80%;
+                max-width: 250px;
+                padding: 10px 20px;
+            }
+        }
+
+        /* Mobile Project Grid */
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 0 10px;
+            }
+
+            .project-card {
+                margin-bottom: 10px;
+            }
+
+            .project-media {
+                height: 150px;
+            }
+
+            .project-content h3 {
+                font-size: 14px;
+                padding: 8px 5px;
+                margin: 0;
+            }
+        }
+
+        /* Mobile STEM Gallery */
+        @media (max-width: 768px) {
+            .stem-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 0 10px;
+            }
+
+            .stem-card {
+                height: 150px;
+            }
+        }
+
+        /* Mobile Skills Section */
+        @media (max-width: 768px) {
+            .skill-tags {
+                gap: 8px;
+                padding: 0 10px;
+            }
+
+            .skill-tag {
+                font-size: 12px;
+                padding: 8px 15px;
+            }
+        }
+
+        /* Mobile Contact Form */
+        @media (max-width: 768px) {
+            .contact-form {
+                padding: 0 15px;
+            }
+
+            input, textarea {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .contact-buttons button {
+                width: 100%;
+                padding: 10px 15px;
+            }
+        }
+
+        /* Mobile Footer */
+        @media (max-width: 768px) {
+            footer {
+                padding: 30px 15px;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .social-links a {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Section Spacing for Mobile */
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Fix modal on mobile */
+        @media (max-width: 768px) {
+            .modal {
+                padding: 20px;
+            }
+
+            .modal-content {
+                max-width: 95%;
+            }
+
+            .close-modal {
+                right: 15px;
+                top: 10px;
+                font-size: 30px;
+            }
+        }
+
+        /* Improve touch targets on mobile */
+        @media (max-width: 768px) {
+            button, 
+            .nav-links a,
+            .hero-btn,
+            .social-links a {
+                min-height: 44px;
+                min-width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Fix video background on mobile */
+        @media (max-width: 768px) {
+            .hero-video {
+                height: 100%;
+                width: auto;
+                object-fit: cover;
+            }
+        }
+
+        /* Improve form elements on mobile */
+        @media (max-width: 768px) {
+            input, 
+            textarea,
+            button {
+                font-size: 16px; /* Prevents iOS zoom on focus */
+            }
+        }
     </style>
 </head>
 <body>
@@ -1192,7 +1396,7 @@
             const message = document.getElementById('message').value;
             
             // Replace this with your actual WhatsApp number
-            const phoneNumber = '+233123456789'; // Add your phone number here
+            const phoneNumber = '+233502144372'; // Add your phone number here
             
             const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
