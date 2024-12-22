@@ -6,6 +6,7 @@
     <title>Benard - Embedded Systems Developer & STEM Educator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
             --primary-color: #2e3192;
@@ -610,6 +611,178 @@
                 margin-bottom: 0;
             }
         }
+
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .contact-buttons button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-buttons button:first-child {
+            background: #25D366; /* WhatsApp green */
+        }
+
+        .contact-buttons button:last-child {
+            background: #007AFF; /* iOS blue */
+        }
+
+        .contact-buttons button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Import Animate.css */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(46,49,146,0.8));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .hero-btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .hero-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(27,255,255,0.3);
+        }
+
+        .floating-tech-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .floating-tech-icons i {
+            position: absolute;
+            color: var(--secondary-color);
+            opacity: 0.5;
+            font-size: 2rem;
+        }
+
+        .floating-tech-icons i:nth-child(1) { top: 20%; left: 20%; }
+        .floating-tech-icons i:nth-child(2) { top: 50%; left: 80%; }
+        .floating-tech-icons i:nth-child(3) { top: 80%; left: 40%; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating-tech-icons i {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-tech-icons i:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .floating-tech-icons i:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .profile-pic {
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 25px rgba(27,255,255,0.3); }
+            50% { box-shadow: 0 0 35px rgba(27,255,255,0.5); }
+            100% { box-shadow: 0 0 25px rgba(27,255,255,0.3); }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .hero-btn {
+                width: 200px;
+            }
+
+            .floating-tech-icons {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -624,18 +797,28 @@
     </nav>
 
     <section class="hero" id="home">
-        <video autoplay muted loop id="hero-video" class="hero-background">
-            <!-- <source src="hero-background.mp4" type="video/mp4"> -->
-
-            <source src="https://videos.pexels.com/video-files/8084750/8084750-uhd_2560_1440_25fps.mp4" type="video/mp4"> 
-        </video>
+        <div class="video-background">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="https://cdn.dribbble.com/users/1461712/screenshots/6691021/arduino_animation.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
         <div class="hero-content" data-aos="fade-up">
-            <div class="profile-image">
+            <div class="profile-image" data-aos="zoom-in" data-aos-delay="200">
                 <img src="ben100.jpg" alt="Your Profile" class="profile-pic">
             </div>
-            <h1>Benard Boateng</h1>
-            <p>Embedded Systems Developer & STEM Educator</p>
-            <p>Bringing technology to life through innovation and education</p>
+            <h1 class="animate__animated animate__fadeInDown">Benard Boateng</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Embedded Systems Developer & STEM Educator</p>
+            <p class="animate__animated animate__fadeInUp animate__delay-2s">Bringing technology to life through innovation and education</p>
+            <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-3s">
+                <a href="#projects" class="hero-btn">View Projects</a>
+                <a href="#contact" class="hero-btn secondary">Contact Me</a>
+            </div>
+            <div class="floating-tech-icons">
+                <i class="fas fa-microchip" data-aos="fade-right" data-aos-delay="400"></i>
+                <i class="fas fa-robot" data-aos="fade-up" data-aos-delay="600"></i>
+                <i class="fas fa-code" data-aos="fade-left" data-aos-delay="800"></i>
+            </div>
         </div>
     </section>
 
@@ -853,11 +1036,18 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2 data-aos="fade-up">Get in Touch</h2>
-            <form class="contact-form" data-aos="fade-up">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea rows="5" placeholder="Message" required></textarea>
-                <button type="submit">Send Message</button>
+            <form class="contact-form" data-aos="fade-up" id="contactForm" onsubmit="return handleSubmit(event)">
+                <input type="text" id="name" placeholder="Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <textarea rows="5" id="message" placeholder="Message" required></textarea>
+                <div class="contact-buttons">
+                    <button type="button" onclick="sendWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                    </button>
+                    <button type="button" onclick="sendSMS()">
+                        <i class="fas fa-sms"></i> Send via SMS
+                    </button>
+                </div>
             </form>
         </div>
     </section>
@@ -988,6 +1178,41 @@
                 document.body.style.overflow = 'auto'; // Restore scrolling
             }
         });
+    </script>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            return false;
+        }
+
+        function sendWhatsApp() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Replace this with your actual WhatsApp number
+            const phoneNumber = '+233123456789'; // Add your phone number here
+            
+            const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+        }
+
+        function sendSMS() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Replace this with your actual phone number
+            const phoneNumber = '+233123456789'; // Add your phone number here
+            
+            const smsBody = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+            const smsURL = `sms:${phoneNumber}?body=${encodeURIComponent(smsBody)}`;
+            
+            window.location.href = smsURL;
+        }
     </script>
 </body>
 </html>
